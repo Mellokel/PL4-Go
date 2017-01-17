@@ -1,0 +1,20 @@
+package main
+import	"fmt"
+
+type Token struct {
+	data string
+	recipient int
+}
+
+func thread(i int, token Token, c chan string) {
+	if (token.recipient == i) {
+	} else {
+		go thread(i+1, token, c)
+	}
+}
+
+func main() {
+	c := make(chan string);
+ 	go thread(1, token, c)	
+	fmt.Println(<-c)
+}
